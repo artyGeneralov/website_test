@@ -6,7 +6,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..'), {extensions: ['html']}));
 
-const url = 'mongodb+srv://admo:b3ar@testcluster1.xlcewrk.mongodb.net/myFirstDatabase';
+const url = 'mongodb+srv://admo:b3ar@testcluster1.xlcewrk.mongodb.net/?retryWrites=true&w=majority';
 const dbName = 'myFirstDatabase'
 let db;
 
