@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "HTML Excersise",
   "main": "index.js",
-  "scripts":"start":"node .\Scripts\server.js" {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node .\Scripts\server.js"
   },
   "author": "",
   "license": "ISC",
