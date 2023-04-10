@@ -1,0 +1,31 @@
+<head>
+	<link rel="stylesheet" href="../style.css">
+	<script src="https://kit.fontawesome.com/0e7ef07845.js" crossorigin="anonymous"></script>
+</head>
+
+
+<div id="top_menu">
+	<h1><u>Shop No. 1</u></h1>
+	<a class = "menu_button" href = "../index.html" target="_top">Home</a>
+	<a class = "menu_button" href = "../about.html" target="_top">About</a>	
+	<a class="purchase_button" href = "../buy_page.html" target="_top">
+		<i class="fa-solid fa-cart-shopping"></i>
+		<i class="fa-solid fa-circle">
+			<label id="cart_counter"></label>
+		</i>
+		
+	</a>
+	<script>
+		/* Update the text according to saved data */
+		var counter = document.getElementById('cart_counter');
+		let products = JSON.parse(localStorage.getItem('shopping_list_items') || '[]');
+		counter.textContent = products.length;
+		window.addEventListener('message', function(event) {
+				if(event.data.type === 'updateCartCounter'){
+					products = JSON.parse(localStorage.getItem('shopping_list_items') || '[]');
+					counter.textContent = products.length;
+				}
+			});
+	
+	</script>
+</div>

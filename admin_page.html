@@ -1,0 +1,42 @@
+<html>
+<head>
+
+</head>
+
+<body>
+<div class="wrapper">
+<h1>Add an item:</h1>
+<label> Item Name: </label>
+<input name="name" type="text">
+<label> Item Description: </label>
+<input name="description" type="text">
+<label> Item Price: </label>
+<input name="price" type="text"></intput>
+<input type="submit" value="Submit"></input>
+</div>
+
+<script>
+	document.querySelector('input[type="submit"]').addEventListener('click', function(){
+	let name = document.querySelector('input[name="name"]').value;
+	let description = document.querySelector('input[name="description"]').value;
+	let price = document.querySelector('input[name="price"]').value;
+	
+	fetch('/admin_page',{
+		method: 'POST',
+		headers: {
+			'Content-Type':'application/json'
+		},
+		body: JSON.stringify({name: name, description: description, price: price})
+		}).then(response => {
+			// response
+		});
+		
+		document.querySelector('input[name="name"]').value = '';
+		document.querySelector('input[name="description"]').value = '';
+		document.querySelector('input[name="price"]').value = '';
+		
+});
+
+</script>
+</body>
+</html>

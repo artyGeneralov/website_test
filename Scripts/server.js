@@ -1,0 +1,35 @@
+const express = require('express');
+const mongo = require('mongodb').MongoClient;
+const path = require('path');
+const app = express();
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '..'), {extensions: ['html']}));
+
+const url = 'mongodb://127.0.0.1:27017';
+const dbName = 'myStoreDb'
+let db;
+
+mongo.connect(url, {useUnifiedTopology: true}, (err,client) => {
+	if(err) return console.log(err);
+	db = client.db(dbName);
+	app.listen(3000, () => {
+		console.log('listening on 3000');
+	});
+});
+
+
+app.post('/admin_page', (req, res) => {
+	db.collection('products').insertOne(req.body, (err, result) => {
+		if (err) return console.log(err);
+		console.log('saved  to db');
+		res.redirect('/');
+	});
+});
+
+app.get('/products',(req,res)=>{
+	db.collection('products').find().toArray((err,result)=>{
+		if(err) return console.log(err);
+		res.send(result);
+	});
+});
