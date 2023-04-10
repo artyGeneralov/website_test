@@ -6,8 +6,8 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..'), {extensions: ['html']}));
 
-const url = 'mongodb://127.0.0.1:27017';
-const dbName = 'myStoreDb'
+const url = 'mongodb+srv://admo:b3ar@testcluster1.xlcewrk.mongodb.net/myFirstDatabase';
+const dbName = 'myFirstDatabase'
 let db;
 
 mongo.connect(url, {useUnifiedTopology: true}, (err,client) => {
