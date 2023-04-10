@@ -13,9 +13,6 @@ let db;
 mongo.connect(url, {useUnifiedTopology: true}, (err,client) => {
 	if(err) return console.log(err);
 	db = client.db(dbName);
-	app.listen(3000, () => {
-		console.log('listening on 3000');
-	});
 });
 
 
