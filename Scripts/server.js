@@ -10,7 +10,7 @@ const url = 'mongodb+srv://admo:b3ar@testcluster1.xlcewrk.mongodb.net/?retryWrit
 const dbName = 'myFirstDatabase'
 let db;
 
-mongo.connect(url, {useUnifiedTopology: true, serverSelectionTimeoutMS: 30000}, (err,client) => {
+mongo.connect(url, {useUnifiedTopology: true}, (err,client) => {
 	if(err) return console.log(err);
 	db = client.db(dbName);
 });
